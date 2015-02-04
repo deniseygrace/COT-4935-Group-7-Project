@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!-- saved from url=(0092)https://blog.twitter.com/2014/tweet-emotion-real-time-tweet-analysis-with-pubnub-data-stream -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr" xmlns:og="http://ogp.me/ns#" class="js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<meta name="twitter:url" content="https://blog.twitter.com/2014/tweet-emotion-real-time-tweet-analysis-with-pubnub-data-stream">
+<meta name="twitter:site" content="@twitterapi">
+<meta name="og:url" content="https://blog.twitter.com/2014/tweet-emotion-real-time-tweet-analysis-with-pubnub-data-stream">
+<meta name="twitter:image" content="https://blog.twitter.com/sites/all/themes/gazebo/img/twitter-bird-white-on-blue.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:widgets:share-with-retweet" content="publisher-only">
+<script async="" src="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/analytics.js"></script><script type="application/json" id="drupal-settings">{"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"gazebo_blog","theme_token":"GChQglM96vZGYLSewu_Dxmv0K-AQkVwYKvvUC_ucLB4"},"analyticsSettings":{"google":{"accounts":["UA-30775-44","UA-30775-45"],"options":{"customVars":{"dimension2":"2","dimension1":"developer"},"customUrl":"","trackerUrl":"https:\/\/g.twimg.com\/googleanalytics\/analytics.js","domains":["blog.twitter.com"],"displayAdvertisingFeatures":true}},"scribe":{"client":"gazebo"},"trackingPixel":{"pixel_ids":[]}}}</script><meta content="on" name="twitter:widgets:csp">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<link href="https://abs.twimg.com/favicons/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta name="og:image" content="https://blog.twitter.com/sites/all/themes/gazebo/img/twitter-bird-white-on-blue.png">
+<meta name="og:site_name" content="Twitter Blogs">
+<meta name="og:title" content="Tweet emotion: real-time Tweet analysis with PubNub Data Stream | Twitter Blogs">
+<meta name="description" content="In this guest blog post, Tomomi Imura from PubNub explains how their new offering can simplify the consumption of realtime Twitter data.">
+<link href="https://g.twimg.com/ios_homescreen_icon.png" rel="apple-touch-icon">
+<link rel="shortlink" href="https://blog.twitter.com/node/5168">
+<meta name="og:description" content="In this guest blog post, Tomomi Imura from PubNub explains how their new offering can simplify the consumption of realtime Twitter data.">
+<meta name="twitter:creator" content="@twitterapi">
+<link rel="canonical" href="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs.html">
+<link rel="image_src" href="https://blog.twitter.com/sites/all/themes/gazebo/img/twitter-bird-white-on-blue.png">
+<meta name="twitter:description" content="In this guest blog post, Tomomi Imura from PubNub explains how their new offering can simplify the consumption of realtime Twitter data.">
+<meta name="twitter:title" content="Tweet emotion: real-time Tweet analysis with PubNub Data Stream | Twitter Blogs">
+<meta name="og:type" content="website">
+    <title>Tweet emotion: real-time Tweet analysis with PubNub Data Stream | Twitter Blogs</title>
+    <link type="text/css" rel="stylesheet" href="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/css_f86yvlnnxReYV5jjLj1Hj-1dP1_EL-iCzqmgGCoaeVs.css" media="all">
+<link type="text/css" rel="stylesheet" href="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/css_RR82BMi-GZZbdskJkKE8yRSiOR9jM-Vu1_7R9fs6l78.css" media="all">
+<link type="text/css" rel="stylesheet" href="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/css_sIhfd1AIaScyZ0Ro3yeD8e_lv9OHNmlgCWidBHRlOEc.css" media="all">
+<link type="text/css" rel="stylesheet" href="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/css_uFinn6LrkpiqH4Uqrs0mwhEIY7FYDlehjVjkjTWv5_4.css" media="all">
+<link type="text/css" rel="stylesheet" href="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/18167178036cbb17253f8a24c7bb626f.css" media="all">
+<link type="text/css" rel="stylesheet" href="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/css_99MuNsPgao6QXNEC_pC8QhxKxjZtCyS6Iz0anAvBwFQ.css" media="all">
+    <script type="text/javascript" src="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/js_B4JLEjCo-pHoZ60ejMReYXE2xHYvGrcLCaB4buJhKgk.js"></script>
+<script type="text/javascript" src="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/js_khfOAWT2z7QE7s9bNkw5afNKRe9w8PMP6gthYSvApG0.js"></script>
+<script type="text/javascript" src="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/js_yHfyvvbg3N65danG-SnvIVxNRylbHwS_-mBwKDrJIFE.js"></script>
+<script type="text/javascript" src="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/js_q3lpnnDzfZEGekMTiaYdv-srw9tIITwWSC2TY1KqiVg.js"></script>
+<script type="text/javascript" src="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/js_kNmTP4ixqVsr3db9oC6Znk3wgWKRGVeqxI-GOnbRYdo.js"></script>
+<script type="text/javascript" src="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/js_BsD1J0VYO_7sNrnLQ25AQi_96pz4TWChe8TDkeZN9vs.js"></script>
+  <style>img.chromoji { width:1em !important; height:1em !important; }.chromoji-font, #chromoji-font { font-size:1em !important; }</style></head>
+
+  <body class="html not-front logged-in one-sidebar sidebar-second page-node page-node- page-node-5168 node-type-blog developer-blog i18n-en g-blog g-blog-page hasGoogleVoiceExt" data-twttr-rendered="true">
+    <div id="skip-link">
+      <a href="https://blog.twitter.com/2014/tweet-emotion-real-time-tweet-analysis-with-pubnub-data-stream#main-content" class="element-invisible element-focusable">Skip to main content</a>
+    </div>
+        <div id="page-wrapper">
+  
+  <nav id="globalnav" class="with-subnav">
+    <div class="container">
+      <div id="site-name">
+        <a href="https://blog.twitter.com/developer" title="Home" class="pull-left"><span class="twitter-bird"></span>Developer Blog</a>      </div>
+      <div class="d-block d-block-menu signed-in dropdown profile-menu">
+  <a class="profile-menu-handle dropdown-toggle" data-toggle="dropdown" href="http://twitter.com/niarsa">
+    <div class="picture"><img src="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/C5pqr7l5_mini.jpeg" alt="niarsa"></div>
+  </a>
+<ul class="menu dropdown-menu pull-right" role="menu"><li class="first leaf" role="menuitem"><a href="https://twitter.com/" title="">Back to Twitter</a></li>
+<li class="last leaf" role="menuitem"><a href="https://twitter.com/logout" title="">Sign out</a></li>
+</ul></div><div class="d-block d-block-search search-form">
+        <form action="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs.html" method="get" id="search-block-form" accept-charset="UTF-8"><div>  <h2 class="element-invisible">Search form</h2>
+<div class="form-item control-group">
+  <label class="control-label element-invisible" for="edit-search-block-form--2">Search </label>
+ <div class="controls"><input title="Enter the terms you wish to search for." placeholder="Search developer blog" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text"></div></div>
+<input class="search-form-submit" type="submit" name="op" value="Search">
+<input type="hidden" name="form_build_id" value="form-o2c3vac8EoI28uSBJeNN_U5WqNTMTQePuBxZf30n3qg">
+<input type="hidden" name="form_id" value="search_block_form">
+<input type="hidden" name="term" value="499">
+</div></form></div>      <a href="https://about.twitter.com/blogs" id="blog-directory-link">All Twitter Blogs</a>    </div>
+  </nav>
+
+  
+  
+  <section id="hero" class="hero-short hero-fade">
+      <div class="hero-wrap-outer">
+      <div class="container">
+        <div class="hero-wrap-inner">
+          
+  <h1 id="page-title"></h1>
+
+
+      <p id="tagline"></p>
+  
+  <p id="en-title"></p>
+
+  &nbsp;
+
+        </div>
+      </div>
+    </div>
+    </section>
+
+  <section id="gaz-content" class="">
+    <div class="container">
+
+      
+      <div id="gaz-content-wrap-outer" class="row">
+
+        
+        <div id="gaz-content-wrap-inner" class="span12">
+
+          
+          <div class="row">
+
+            <div class="article-wrap span9">
+
+                            <div class="tabs">
+                              </div>
+              
+              <article id="gaz-content-body" class="content">
+                              <header>
+                                    <h1 id="page-title"><a href="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs.html" class="active">Tweet emotion: real-time Tweet analysis with PubNub Data Stream</a></h1>
+                                  </header>
+                            <div class="d-block d-block-system g-main">
+        <div id="node-5168" class="node node-blog">
+
+      
+      <div class="submitted">
+      <span class="date">Friday, December 5, 2014</span> | <span class="name">By Tomomi Imura (<span class="handle"><span class="screen-name"><a href="https://twitter.com/intent/user?screen_name=girlie_mac" title="girlie_mac">@girlie_mac</a></span></span>), PubNub Guest Post&nbsp;12/05/2014 - 00:49</span>    </div>
+  
+      <div class="g-tweet-button">
+      <a href="https://twitter.com/intent/tweet?text=Tweet+emotion%3A+real-time+Tweet+analysis+with+PubNub+Data+Stream&url=https%3A%2F%2Fblog.twitter.com%2F2014%2Ftweet-emotion-real-time-tweet-analysis-with-pubnub-data-stream" class="btn btn-cta">Tweet</a>    </div>
+  
+  <div class="content">
+    
+    <div class="d-field d-body g-body"><div class="d-field-item"><p>PubNub recently released a demo Twitter stream published through their hosted websockets. The stream can be consumed on a variety of platforms using one of their many SDKs. In Part 1 of this two-part series, guest blogger and PubNub Developer Advocate Tomomi Imura will walk you through creating a cartographic visualization using D3, Twitter data and the PubNub API.</p>
+<p>If you’re trying to build awesome web applications by processing Twitter streaming data, wouldn’t it be great if you could skip the complicated process of long polling and just write front-end code with JavaScript? The <a href="https://twitter.com/intent/user?screen_name=PubNub">@PubNub</a> <a href="http://www.pubnub.com/?utm_source=twitterdevblog&utm_medium=twitteremotion">real-time public Twitter stream</a> makes that possible for you.</p>
+<p>The PubNub data stream network allows you to send and receive JSON data on any device using persistent socket connections. Now, with PubNub’s newly announced real-time <a href="http://www.pubnub.com/developers/data-streams/twitter-stream/?utm_source=twitterdevblog&utm_medium=twitteremotion">Twitter stream</a>, you can consume this public data without hassle.</p>
+<p><a href="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/PubNub1.png"><img src="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/PubNub1.png" width="700" height="457" alt=""></a><span>The demo above displays a simple Twitter data analysis of how people in U.S. are feeling based on how they’re Tweeting at any given moment. The demo looks for certain words and emoticons in the incoming Twitter stream that indicate a person’s mood, and then maps it by state.</span></p>
+<p>First, check out this <a href="http://pubnub.github.io/tweet-emotion/">Twitter emotion stream app</a> first. Then continue reading the article and view the entire <a href="https://github.com/pubnub/tweet-emotion">source code</a> on Github.</p>
+<h5>Prerequisites</h5>
+<p>In this tutorial, you will learn how to create a cartographic visualization with real-time data by:</p>
+<ol><li>Using TopoJSON to display a U.S. state map using d3.js</li>
+<li>Using PubNub JavaScript API to consume Twitter stream</li>
+<li>Colorizing the map by moods</li>
+</ol><p>For this tutorial, you’ll need basic-to-intermediate knowledge of JavaScript Document Object Model (DOM), and basic understanding of SVG and <a href="http://d3js.org/">D3.js</a>.</p>
+<h5>Using TopoJSON with D3.js</h5>
+<p>The U.S. map you see in the demo is actually in JSON, and rendered in SVG with D3.js <a href="https://github.com/mbostock/d3/wiki/Geo-Paths#path">d3.geo.path</a>.</p>
+<p><a href="https://github.com/mbostock/topojson">TopoJSON</a> is an extension of GeoJSON, which encodes topology and is used to represent geographic features with JavaScript. The difference is that TopoJSON only includes the data you need to render, and the size can be significantly smaller.</p>
+<p>This is how the <a href="https://github.com/pubnub/tweet-emotion/blob/gh-pages/json/us-states.json">United States map</a> looks in JSON. (GitHub now supports rendering GeoJSON map files within repositories, so you may want to click “Raw” or “Blame” to see in raw JSON file.)</p>
+<p>OK, let’s get started. Rendering TopoJSON is incredibly easy when you are using D3.</p>
+<div><div id="highlighter_135357" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="https://blog.twitter.com/2014/tweet-emotion-real-time-tweet-analysis-with-pubnub-data-stream#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">var svg = d3.</code><code class="bash functions">select</code><code class="bash plain">(</code><code class="bash string">'#map'</code><code class="bash plain">).append(</code><code class="bash string">'svg'</code><code class="bash plain">).attr(</code><code class="bash string">'width'</code><code class="bash plain">, 900).attr(</code><code class="bash string">'height'</code><code class="bash plain">, 550);</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="bash plain">var path = d3.geo.path().projection(d3.geo.albersUsa());</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="bash plain">var g = svg.append(</code><code class="bash string">'g'</code><code class="bash plain">);</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="bash plain">d3.json(</code><code class="bash string">'us-states.json'</code><code class="bash plain">, </code><code class="bash keyword">function</code><code class="bash plain">(error, topology) {</code></div><div class="line number8 index7 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">g.selectAll(</code><code class="bash string">'path'</code><code class="bash plain">)</code></div><div class="line number9 index8 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">.data(topojson.feature(topology, topology.objects.usStates).features)</code></div><div class="line number10 index9 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">.enter().append(</code><code class="bash string">'path'</code><code class="bash plain">)</code></div><div class="line number11 index10 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">.attr(</code><code class="bash string">'class'</code><code class="bash plain">, </code><code class="bash keyword">function</code><code class="bash plain">(d){ </code><code class="bash keyword">return</code> <code class="bash string">'states '</code> <code class="bash plain">+ d.properties.STATE_ABBR;} )</code></div><div class="line number12 index11 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">.attr(</code><code class="bash string">'d'</code><code class="bash plain">, path)</code></div><div class="line number13 index12 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">.attr(</code><code class="bash string">'fill'</code><code class="bash plain">, </code><code class="bash string">'gray'</code><code class="bash plain">)</code></div><div class="line number14 index13 alt1"><code class="bash plain">});</code></div></div></td></tr></tbody></table></div></div>
+<p>Notice that we are assigning an abbreviated state name as a class name, so you can give or modify color for each state later.</p>
+<h5>Getting realtime data from PubNub stream</h5>
+<p>Getting the live JSON data from the PubNub stream is really simple.</p>
+<p>First, you need to <a href="http://www.pubnub.com/get-started/?utm_source=twitter&utm_medium=twitterdevblog">sign up for API Keys</a> for a free PubNub account. Then, include the PubNub JavaScript libraries in your HTML.</p>
+<div><div id="highlighter_512147" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="https://blog.twitter.com/2014/tweet-emotion-real-time-tweet-analysis-with-pubnub-data-stream#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">&lt;script src=</code><code class="bash string">"//cdn.pubnub.com/pubnub.min.js"</code><code class="bash plain">&gt;&lt;</code><code class="bash plain">/script</code><code class="bash plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+<p>We are using a public stream called <code>pubnub-twitter</code>, so let’s initialize the API with the channel name and a public key.</p>
+<div><div id="highlighter_29549" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="https://blog.twitter.com/2014/tweet-emotion-real-time-tweet-analysis-with-pubnub-data-stream#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">var channel = </code><code class="bash string">'pubnub-twitter'</code><code class="bash plain">;</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="bash plain">var pubnub = PUBNUB.init({</code></div><div class="line number4 index3 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">subscribe_key: </code><code class="bash string">'sub-c-78806dd4-42a6-11e4-aed8-02ee2ddab7fe'</code></div><div class="line number5 index4 alt2"><code class="bash plain">});</code></div></div></td></tr></tbody></table></div></div>
+<h5>Subscribe to the live data</h5>
+<p>To retrieve the live Tweets, you simply use PubNub <code>subscribe()</code> API.</p>
+<div><div id="highlighter_765424" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="https://blog.twitter.com/2014/tweet-emotion-real-time-tweet-analysis-with-pubnub-data-stream#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">pubnub.subscribe({</code></div><div class="line number2 index1 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">channel: channel,</code></div><div class="line number3 index2 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">callback: processData</code></div><div class="line number4 index3 alt1"><code class="bash plain">});</code></div></div></td></tr></tbody></table></div></div>
+<p>Once you successfully retrieve the data from the stream, call the callback function, let’s call it <code>processData</code>, to consume the data. You can take a look at the stream of data in this <a href="http://www.pubnub.com/developers/data-streams/twitter-stream/?utm_source=twitterdevblog&utm_medium=twitteremotion">Twitter stream console</a>.</p>
+<h5>Display data on map</h5>
+<p>Create a mini dictionary that describes moods to pseudo-analyze Tweets.</p>
+<div><div id="highlighter_375252" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="https://blog.twitter.com/2014/tweet-emotion-real-time-tweet-analysis-with-pubnub-data-stream#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">var positiveWords = [</code></div><div class="line number2 index1 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash string">'excellent'</code><code class="bash plain">, </code><code class="bash string">'amazing'</code><code class="bash plain">, </code><code class="bash string">'happy'</code><code class="bash plain">, </code><code class="bash string">'magnificent'</code><code class="bash plain">, </code><code class="bash string">':)'</code><code class="bash plain">, ...</code></div><div class="line number3 index2 alt2"><code class="bash plain">];</code></div><div class="line number4 index3 alt1"><code class="bash plain">var negativeWords = [</code></div><div class="line number5 index4 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash string">'unhappy'</code><code class="bash plain">, </code><code class="bash string">'sorry'</code><code class="bash plain">, </code><code class="bash string">'annoyed'</code><code class="bash plain">, </code><code class="bash string">'dislike'</code><code class="bash plain">, </code><code class="bash string">'anxious'</code><code class="bash plain">, </code><code class="bash string">':('</code><code class="bash plain">, ...</code></div><div class="line number6 index5 alt1"><code class="bash plain">];</code></div></div></td></tr></tbody></table></div></div>
+<p>See if these words are used in each Tweet, in the callback function, ‘processData()’.</p>
+<div><div id="highlighter_862433" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="https://blog.twitter.com/2014/tweet-emotion-real-time-tweet-analysis-with-pubnub-data-stream#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash keyword">function</code> <code class="bash plain">processData(data) {</code></div><div class="line number2 index1 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">//</code> <code class="bash plain">looking </code><code class="bash keyword">for</code> <code class="bash plain">US data only </code><code class="bash keyword">for</code> <code class="bash plain">this demo</code></div><div class="line number3 index2 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash keyword">if</code><code class="bash plain">(data.place.country_code !== </code><code class="bash string">'US'</code><code class="bash plain">) </code><code class="bash keyword">return</code><code class="bash plain">;</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">//</code> <code class="bash plain">Check </code><code class="bash keyword">if</code> <code class="bash plain">emotional words are used </code><code class="bash keyword">in</code> <code class="bash plain">the tweet</code></div><div class="line number6 index5 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash keyword">if</code> <code class="bash plain">(positiveWords.some(</code><code class="bash keyword">function</code><code class="bash plain">(</code><code class="bash functions">v</code><code class="bash plain">) { </code><code class="bash keyword">return</code> <code class="bash plain">data.text.toLowerCase().indexOf(</code><code class="bash functions">v</code><code class="bash plain">) &gt; 0; })) {</code></div><div class="line number7 index6 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">displayData(data, positive);</code></div><div class="line number8 index7 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">} </code><code class="bash keyword">else</code> <code class="bash keyword">if</code></div><div class="line number9 index8 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">...</code></div><div class="line number10 index9 alt1"><code class="bash plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Take only information you need from the entire Tweet object. In this case, extract the user’s location from the schema. Remember, we have set an abbreviated state name as a class attribute in the SVG path. Now we are going to use the user’s home state to match the map path.</p>
+<div><div id="highlighter_657681" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="https://blog.twitter.com/2014/tweet-emotion-real-time-tweet-analysis-with-pubnub-data-stream#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash keyword">function</code> <code class="bash plain">displayData(data, emotion) {</code></div><div class="line number2 index1 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">var state = data.place.full_name.substring(city.lastIndexOf(</code><code class="bash string">','</code><code class="bash plain">)+1).trim();</code></div><div class="line number3 index2 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number4 index3 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash keyword">if</code><code class="bash plain">(document.querySelector(</code><code class="bash string">'.'</code><code class="bash plain">+state)) {</code></div><div class="line number5 index4 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">var stateEl = document.querySelector(</code><code class="bash string">'.'</code><code class="bash plain">+state);</code></div><div class="line number6 index5 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number7 index6 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">//</code> <code class="bash plain">count</code></div><div class="line number8 index7 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">tally[state] = (tally[state] || {positive: 0, negative: 0});</code></div><div class="line number9 index8 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">tally[state][emotion] = (tally[state][emotion] || 0) + 1;</code></div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">//</code> <code class="bash plain">colorize svg path&nbsp; </code></div><div class="line number12 index11 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">stateEl.style.fill = (tally[state].positive &gt; tally[state].negative) ? </code><code class="bash string">'pink'</code> <code class="bash plain">: ((tally[state].positive &lt; tally[state].negative) ? </code><code class="bash string">'turquoise'</code> <code class="bash plain">: </code><code class="bash string">'beige'</code><code class="bash plain">); </code></div><div class="line number13 index12 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">}&nbsp;&nbsp; </code></div><div class="line number14 index13 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">}</code></div><div class="line number15 index14 alt2"><code class="bash plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p><a href="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/PubNub2.png"><img src="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/PubNub2.png" width="700" height="551" alt=""></a></p>
+<p>Ta-da! You’ve just live-analyzed Tweets from the entire United States and turned them into a cartographic visualization!</p>
+<p>We hope you enjoyed this tutorial. If you would like to explore this demo, see the entire <a href="https://github.com/pubnub/tweet-emotion">source code</a> of the demo on GitHub. And if you haven’t already, be sure to sign up for <a href="http://www.pubnub.com/get-started/?utm_source=twitterdevblog&utm_medium=twitteremotion">PubNub</a> to create awesome real-time apps!</p>
+<p><a href="https://twitter.com/intent/user?screen_name=TwitterDev">@TwitterDev</a> would like to thank <a href="https://twitter.com/girlie_mac">Tomomi Imura</a> and <a href="https://twitter.com/intent/user?screen_name=PubNub">@PubNub</a> for creating these great demo apps using Twitter data. The NodeJS source code for interfacing with the Twitter streaming/filter API and publishing with the PubNub API is also available <a href="https://gist.github.com/stephenlb/36aef15a165d5bad0d82">in this GitHub Gist</a>. For detailed documentation on the Twitter API, be sure to visit <a href="https://dev.twitter.com/overview/api">dev.twitter.com</a>.</p>
+<p><a href="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/PubNub3.png"><img src="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/PubNub3.png" width="700" height="439" alt=""></a></p></div></div>          <div class="post-tags">
+        <div class="d-field d-field-blog-tags g-blog-tags clearfix"><strong class="field-label">Tags: </strong><ul class="links inline"><li><a href="https://blog.twitter.com/tags/api">API</a>, <a href="https://blog.twitter.com/tags/guest-posts">guest posts</a>, and <a href="https://blog.twitter.com/tags/javascript">javascript</a> </li></ul></div>      </div>
+    
+        <div class="pagination pagination-centered">
+      <div class="item-list"><ul><li class="previous first"><a href="https://blog.twitter.com/2014/getting-started-with-fabric-and-android-wear">Newer post</a></li>
+<li class="next last"><a href="https://blog.twitter.com/2014/twitter-developer-events-december-2014">Older post</a></li>
+</ul></div>    </div>
+    
+  </div>
+</div>
+</div>              </article>
+
+              
+            </div>
+                        <aside id="sidebar-second" class="span3">
+              <div class="d-block d-block-helper-blog-blocks g-blog-related-posts">
+        <h2 class="title">Related Posts</h2>
+      <div class="item-list"><ul><li class="first last"><a href="https://blog.twitter.com/2014/creating-a-realtime-tweet-visualization-in-3-d">Creating a realtime Tweet visualization in 3-D</a></li>
+</ul></div></div><div class="d-block d-block-helper-blog-blocks g-developer-tips-tools-practices">
+        <a href="https://dev.twitter.com/" class="vertical-site-image-link"><img src="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/blog-dev-site.png" alt="Twitter Developers" title="Twitter Developers"></a><h2 class="title SystemBlock-title">Tools to get the most out of Twitter.</h2>
+<a href="https://dev.twitter.com/" class="vertical-site-link">dev.twitter.com</a>
+
+</div><div class="d-block d-block-views g-blog-related-links">
+        <h2 class="title">Related Links</h2>
+      <div class="view view-blog view-id-blog view-display-id-related_links">
+
+      
+  
+  
+  
+            <div class="view-content">
+              <ul>          <li class="">  
+          <a href="https://dev.twitter.com/docs/api/1.1/post/statuses/filter" rel="nofollow" target="_blank">Twitter API statuses/filter stream</a>  </li>
+          <li class="">  
+          <a href="http://www.pubnub.com/developers/data-streams/twitter-stream?utm_source=twitterdevblog&utm_medium=twitterspotify" rel="nofollow" target="_blank">PubNub Twitter stream demo</a>  </li>
+      </ul>    </div>
+  
+  
+  
+  
+  
+  
+</div></div><div class="d-block d-block-helper-tfw g-helper-tfw-embedded-timeline" data-twttr-id="twttr-sandbox-0">
+        <iframe id="twitter-widget-1" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-timeline twitter-timeline-rendered" allowfullscreen="" style="border: none; max-width: 100%; min-width: 180px; width: 220px;" title="Twitter Timeline" height="430"></iframe></div><div class="d-block d-block-helper-blog-blocks g-browse-by-tags">
+        <div class="item-list"><h3><span data-group="recent" class="recent"><a class="active is-active" href="https://blog.twitter.com/#">Recent</a></span><span data-group="popular" class="popular"><a href="https://blog.twitter.com/#">Popular</a></span></h3><ol class="recent"><li class="List--browser--tag-tag first"><a href="https://blog.twitter.com/taxonomy/term/478?blog=developer">ruby <span>(1)</span></a></li>
+<li class="List--browser--tag-tag"><a href="https://blog.twitter.com/taxonomy/term/459?blog=developer">java <span>(1)</span></a></li>
+<li class="List--browser--tag-tag"><a href="https://blog.twitter.com/taxonomy/term/533?blog=developer">Fabric <span>(6)</span></a></li>
+<li class="List--browser--tag-tag"><a href="https://blog.twitter.com/taxonomy/term/496?blog=developer">Vine <span>(1)</span></a></li>
+<li class="List--browser--tag-tag"><a href="https://blog.twitter.com/taxonomy/term/470?blog=developer">open source <span>(2)</span></a></li>
+<li class="List--browser--tag-tag"><a href="https://blog.twitter.com/taxonomy/term/444?blog=developer">design <span>(1)</span></a></li>
+<li class="List--browser--tag-tag"><a href="https://blog.twitter.com/taxonomy/term/526?blog=developer">MoPub <span>(1)</span></a></li>
+<li class="List--browser--tag-tag"><a href="https://blog.twitter.com/taxonomy/term/495?blog=developer">video <span>(1)</span></a></li>
+<li class="List--browser--tag-tag"><a href="https://blog.twitter.com/taxonomy/term/460?blog=developer">javascript <span>(3)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/466?blog=developer">mobile <span>(1)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/441?blog=developer">commentary <span>(1)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/520?blog=developer">guest posts <span>(3)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/442?blog=developer">Crashlytics <span>(4)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/514?blog=developer">API <span>(14)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/463?blog=developer">live events <span>(6)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/457?blog=developer">how-to <span>(5)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/515?blog=developer">Twitter Cards <span>(3)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/513?blog=developer">syndication <span>(4)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/502?blog=developer">advertising <span>(1)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/449?blog=developer">events <span>(22)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/433?blog=developer">analytics <span>(2)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/445?blog=developer">developers <span>(51)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/481?blog=developer">security <span>(7)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/434?blog=developer">announcements <span>(21)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/436?blog=developer">best practices <span>(3)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/493?blog=developer">Twitter data <span>(4)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible last"><a href="https://blog.twitter.com/taxonomy/term/471?blog=developer">partners <span>(3)</span></a></li>
+</ol></div><div class="item-list"><ol class="hidden is-hidden popular"><li class="List--browser--tag-tag first"><a href="https://blog.twitter.com/taxonomy/term/445?blog=developer">developers <span>(51)</span></a></li>
+<li class="List--browser--tag-tag"><a href="https://blog.twitter.com/taxonomy/term/449?blog=developer">events <span>(22)</span></a></li>
+<li class="List--browser--tag-tag"><a href="https://blog.twitter.com/taxonomy/term/434?blog=developer">announcements <span>(21)</span></a></li>
+<li class="List--browser--tag-tag"><a href="https://blog.twitter.com/taxonomy/term/514?blog=developer">API <span>(14)</span></a></li>
+<li class="List--browser--tag-tag"><a href="https://blog.twitter.com/taxonomy/term/481?blog=developer">security <span>(7)</span></a></li>
+<li class="List--browser--tag-tag"><a href="https://blog.twitter.com/taxonomy/term/463?blog=developer">live events <span>(6)</span></a></li>
+<li class="List--browser--tag-tag"><a href="https://blog.twitter.com/taxonomy/term/533?blog=developer">Fabric <span>(6)</span></a></li>
+<li class="List--browser--tag-tag"><a href="https://blog.twitter.com/taxonomy/term/457?blog=developer">how-to <span>(5)</span></a></li>
+<li class="List--browser--tag-tag"><a href="https://blog.twitter.com/taxonomy/term/442?blog=developer">Crashlytics <span>(4)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/513?blog=developer">syndication <span>(4)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/493?blog=developer">Twitter data <span>(4)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/520?blog=developer">guest posts <span>(3)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/460?blog=developer">javascript <span>(3)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/471?blog=developer">partners <span>(3)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/515?blog=developer">Twitter Cards <span>(3)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/436?blog=developer">best practices <span>(3)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/433?blog=developer">analytics <span>(2)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/470?blog=developer">open source <span>(2)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/459?blog=developer">java <span>(1)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/496?blog=developer">Vine <span>(1)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/444?blog=developer">design <span>(1)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/526?blog=developer">MoPub <span>(1)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/495?blog=developer">video <span>(1)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/466?blog=developer">mobile <span>(1)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/441?blog=developer">commentary <span>(1)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible"><a href="https://blog.twitter.com/taxonomy/term/502?blog=developer">advertising <span>(1)</span></a></li>
+<li class="List--browser--tag-tag hidden is-hidden is-collapsible last"><a href="https://blog.twitter.com/taxonomy/term/478?blog=developer">ruby <span>(1)</span></a></li>
+</ol></div><a class="show" href="https://blog.twitter.com/#">Show more tags</a><a class="collapse-tags hidden is-hidden" href="https://blog.twitter.com/#">Collapse</a></div><div class="d-block d-block-helper-blog-blocks g-browse-by-date">
+        <div class="item-list"><h3><span class="year">Year</span><span class="month">Month</span></h3><ol style="height: 170px;"><li data-count="6" data-year="2015" class="active is-active first"><a href="https://blog.twitter.com/developer?year=2015" class="active is-active">2015 <span>(6)</span></a><div class="item-list"><ol data-count="6" data-year="2015" class="active is-active"><li data-count="5" class="first"><a href="https://blog.twitter.com/developer?year=2015&month=1" class="">Jan <span>(5)</span></a></li>
+<li data-count="1" class="last"><a href="https://blog.twitter.com/developer?year=2015&month=2" class="">Feb <span>(1)</span></a></li>
+</ol></div></li>
+<li data-count="54" data-year="2014" class=""><a href="https://blog.twitter.com/developer?year=2014" class="">2014 <span>(54)</span></a><div class="item-list"><ol data-count="54" data-year="2014" class=""><li data-count="1" class="first"><a href="https://blog.twitter.com/developer?year=2014&month=1" class="">Jan <span>(1)</span></a></li>
+<li data-count="2"><a href="https://blog.twitter.com/developer?year=2014&month=2" class="">Feb <span>(2)</span></a></li>
+<li data-count="1"><a href="https://blog.twitter.com/developer?year=2014&month=3" class="">Mar <span>(1)</span></a></li>
+<li data-count="2"><a href="https://blog.twitter.com/developer?year=2014&month=4" class="">Apr <span>(2)</span></a></li>
+<li data-count="9"><a href="https://blog.twitter.com/developer?year=2014&month=5" class="">May <span>(9)</span></a></li>
+<li data-count="5"><a href="https://blog.twitter.com/developer?year=2014&month=6" class="">Jun <span>(5)</span></a></li>
+<li data-count="8"><a href="https://blog.twitter.com/developer?year=2014&month=7" class="">Jul <span>(8)</span></a></li>
+<li data-count="5"><a href="https://blog.twitter.com/developer?year=2014&month=8" class="">Aug <span>(5)</span></a></li>
+<li data-count="5"><a href="https://blog.twitter.com/developer?year=2014&month=9" class="">Sep <span>(5)</span></a></li>
+<li data-count="7"><a href="https://blog.twitter.com/developer?year=2014&month=10" class="">Oct <span>(7)</span></a></li>
+<li data-count="4"><a href="https://blog.twitter.com/developer?year=2014&month=11" class="">Nov <span>(4)</span></a></li>
+<li data-count="5" class="last"><a href="https://blog.twitter.com/developer?year=2014&month=12" class="">Dec <span>(5)</span></a></li>
+</ol></div></li>
+<li data-count="29" data-year="2013" class=""><a href="https://blog.twitter.com/developer?year=2013" class="">2013 <span>(29)</span></a><div class="item-list"><ol data-count="29" data-year="2013" class=""><li data-count="3" class="first"><a href="https://blog.twitter.com/developer?year=2013&month=1" class="">Jan <span>(3)</span></a></li>
+<li data-count="5"><a href="https://blog.twitter.com/developer?year=2013&month=2" class="">Feb <span>(5)</span></a></li>
+<li data-count="5"><a href="https://blog.twitter.com/developer?year=2013&month=3" class="">Mar <span>(5)</span></a></li>
+<li data-count="4"><a href="https://blog.twitter.com/developer?year=2013&month=4" class="">Apr <span>(4)</span></a></li>
+<li data-count="5"><a href="https://blog.twitter.com/developer?year=2013&month=5" class="">May <span>(5)</span></a></li>
+<li data-count="1"><a href="https://blog.twitter.com/developer?year=2013&month=6" class="">Jun <span>(1)</span></a></li>
+<li data-count="2"><a href="https://blog.twitter.com/developer?year=2013&month=8" class="">Aug <span>(2)</span></a></li>
+<li data-count="1"><a href="https://blog.twitter.com/developer?year=2013&month=9" class="">Sep <span>(1)</span></a></li>
+<li data-count="3" class="last"><a href="https://blog.twitter.com/developer?year=2013&month=11" class="">Nov <span>(3)</span></a></li>
+</ol></div></li>
+<li data-count="39" data-year="2012" class=""><a href="https://blog.twitter.com/developer?year=2012" class="">2012 <span>(39)</span></a><div class="item-list"><ol data-count="39" data-year="2012" class=""><li data-count="8" class="first"><a href="https://blog.twitter.com/developer?year=2012&month=1" class="">Jan <span>(8)</span></a></li>
+<li data-count="5"><a href="https://blog.twitter.com/developer?year=2012&month=2" class="">Feb <span>(5)</span></a></li>
+<li data-count="1"><a href="https://blog.twitter.com/developer?year=2012&month=3" class="">Mar <span>(1)</span></a></li>
+<li data-count="4"><a href="https://blog.twitter.com/developer?year=2012&month=4" class="">Apr <span>(4)</span></a></li>
+<li data-count="3"><a href="https://blog.twitter.com/developer?year=2012&month=5" class="">May <span>(3)</span></a></li>
+<li data-count="3"><a href="https://blog.twitter.com/developer?year=2012&month=6" class="">Jun <span>(3)</span></a></li>
+<li data-count="2"><a href="https://blog.twitter.com/developer?year=2012&month=8" class="">Aug <span>(2)</span></a></li>
+<li data-count="3"><a href="https://blog.twitter.com/developer?year=2012&month=9" class="">Sep <span>(3)</span></a></li>
+<li data-count="4"><a href="https://blog.twitter.com/developer?year=2012&month=10" class="">Oct <span>(4)</span></a></li>
+<li data-count="3"><a href="https://blog.twitter.com/developer?year=2012&month=11" class="">Nov <span>(3)</span></a></li>
+<li data-count="3" class="last"><a href="https://blog.twitter.com/developer?year=2012&month=12" class="">Dec <span>(3)</span></a></li>
+</ol></div></li>
+<li data-count="28" data-year="2011" class=" last"><a href="https://blog.twitter.com/developer?year=2011" class="">2011 <span>(28)</span></a><div class="item-list"><ol data-count="28" data-year="2011" class=""><li data-count="4" class="first"><a href="https://blog.twitter.com/developer?year=2011&month=7" class="">Jul <span>(4)</span></a></li>
+<li data-count="5"><a href="https://blog.twitter.com/developer?year=2011&month=8" class="">Aug <span>(5)</span></a></li>
+<li data-count="7"><a href="https://blog.twitter.com/developer?year=2011&month=9" class="">Sep <span>(7)</span></a></li>
+<li data-count="6"><a href="https://blog.twitter.com/developer?year=2011&month=10" class="">Oct <span>(6)</span></a></li>
+<li data-count="4"><a href="https://blog.twitter.com/developer?year=2011&month=11" class="">Nov <span>(4)</span></a></li>
+<li data-count="2" class="last"><a href="https://blog.twitter.com/developer?year=2011&month=12" class="">Dec <span>(2)</span></a></li>
+</ol></div></li>
+</ol></div></div>            </aside>
+            
+          </div>
+        </div>
+      </div>
+      
+    </div>  </section>
+    <footer id="gaz-sub-footer" class="row-fluid">
+    <div class="container">
+      <div class="d-block d-block-helper-tfw g-helper-tfw-tweet-count-button">
+        <div class="g-tweet-button"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/tweet_button.67ae45a68af44ab435dd5797206058d3.en.html" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 136px; height: 28px;"></iframe></div></div>    </div>
+  </footer>
+  
+  <footer id="globalfooter" class="row-fluid">
+    <div class="container">
+      <div class="d-block d-block-menu g-menu-global-footer">
+  <ul class="menu nav clearfix" role="menu"><li class="first leaf" role="menuitem"><a href="https://about.twitter.com/" target="_blank">About</a></li>
+<li class="leaf" role="menuitem"><a href="https://support.twitter.com/" target="_blank">Support</a></li>
+<li class="leaf" role="menuitem"><a href="https://twitter.com/tos" target="_blank">Terms</a></li>
+<li class="leaf" role="menuitem"><a href="https://twitter.com/privacy" target="_blank">Privacy</a></li>
+<li class="last leaf" role="menuitem"><a href="https://support.twitter.com/articles/20170514" target="_blank">Cookies</a></li>
+</ul></div>      <span class="copyright">© 2015 Twitter, Inc.</span>
+    </div>
+  </footer>
+
+</div>
+    <script type="text/javascript" src="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/js_Rk5YIkK6m2gKTGH-GrMu0pM_PlMKXnI0ktQUgXw1XgA.js"></script>
+<script type="text/javascript" src="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/widgets.js"></script>
+<script type="text/javascript" src="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/js_WRH7WYq-FQCJT26vr-LZAlWu_t37jPSQ1Sws4gdMfko.js"></script>
+<script type="text/javascript" src="./Tweet emotion  real-time Tweet analysis with PubNub Data Stream   Twitter Blogs_files/oct.js"></script>
+  
+
+<iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" style="display: none;"></iframe></body></html>
